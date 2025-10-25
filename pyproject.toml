@@ -1,0 +1,60 @@
+[project]
+name = "pulp-vec"
+version = "0.1.0"
+description = "Vector-based utilities for PuLP - numpy-compatible wrappers for large-scale linear programming"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pulp>=2.7.0",
+    "numpy>=1.20.0",
+]
+authors = [
+    { name = "James Palmer" }
+]
+keywords = ["optimization", "linear programming", "pulp", "milp", "operations research"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[project.urls]
+Homepage = "https://github.com/jamespalmer/pulp-vec"
+Repository = "https://github.com/jamespalmer/pulp-vec"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "basedpyright<1.32",
+    "ruff>=0.14.2",
+]
+
+[tool.basedpyright]
+typeCheckingMode = "standard"
+reportExplicitAny = false
+reportUnknownMemberType = false
+reportUnknownParameterType = false
+reportUnknownArgumentType = false
+reportUnknownVariableType = false
+reportImplicitStringConcatenation = false
+reportAny = false
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "A", "C4", "SIM"]
+ignore = [
+    "E721",  # Allow type() == comparisons (we want exact type matching, not isinstance)
+    "N802",  # Allow uppercase property name T (matches numpy/pandas convention)
+]
